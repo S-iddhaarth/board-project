@@ -12,7 +12,7 @@ root=Tk()
 url = StringVar()
 a = StringVar()
 link1 = StringVar()
-
+b = StringVar()
 def short_del():
     global label_short
     global label_short2
@@ -69,12 +69,16 @@ def easycopy():  # function to copy the shorten url
     pyperclip.copy(linkS)  # code to copy
 
 def text():
+    global name
     AUD = filedialog.askopenfilename()
     r = sr.Recognizer()
     with sr.AudioFile(AUD) as source:
         audio = r.record(source)  # read the entire audio file
     print("converting..............")
     print(r.recognize_google(audio))
+    file = open(b.get() + ".txt", 'w+')
+    file.write(r.recognize_google(audio))
+    file.close()
 
 
 
@@ -82,24 +86,46 @@ def aud_txt_del():
     global label_aud_txt
     global aud_txt_covbutton
     global aud_txt_back
+    global aud_tex1
+    global aud_tex2
+    global name
+    global Lable_name
 
+
+    name.grid_forget()
+    Lable_name.grid_forget()
     label_aud_txt.grid_forget()
     aud_txt_covbutton.grid_forget()
     aud_txt_back.grid_forget()
+    aud_tex1.grid_forget()
+    aud_tex2.grid_forget()
     second_page()
 
 def audio_to_text():
     pagedel()
 
+    root.configure(bg='light blue')
     global label_aud_txt
     global aud_txt_covbutton
     global aud_txt_back
-    label_aud_txt = Label(text="click the button below to convert")
-    aud_txt_covbutton = Button(text="browse...", font=("Herculanum",), command=text )
-    aud_txt_back = Button(root , text = ">>" , command = aud_txt_del)
-    label_aud_txt.grid(row = 0 ,column =0)
-    aud_txt_covbutton.grid(row = 1,column =0)
-    aud_txt_back.grid(row =2 , column = 1)
+    global aud_tex1
+    global aud_tex2
+    global name
+    global Lable_name
+    Lable_name = Label(root , text = "enter the name of the text file in which you want to store the text ")
+    Lable_name.grid(row = 1,column = 0)
+    name = Entry(root, width=50, textvariable= b, bg="thistle1")
+    name.grid(row =2 ,column =0 , pady = 5)
+    aud_tex1 = Label(root, text='AUDIO TO TEXT', font=("Phosphate", 30), bg='light blue')
+    aud_tex1.grid(row=0, column=0, padx=168, pady=25)
+    label_aud_txt = Label(text="click the button below to convert", font=('normal', 26), bg='light blue')
+    aud_txt_covbutton = Button(text="browse...", font=("Herculanum",), activebackground='cornsilk2' ,command =text)
+    aud_txt_back = Button(root, text=">>" ,command = aud_txt_del)
+    label_aud_txt.grid(row=3, column=0, padx=5)
+    aud_txt_covbutton.grid(row=4, column=0, pady=20)
+    aud_tex2 = Label(text='AUDIO RECORDING TECHNOLOGY WAS HIDDEN FROM REST OF THE WORLD FOR\n 15 YEARS BY NAZI REGIME',font=('normal', 12), bg='light blue')
+    aud_tex2.grid(row=5, column=0)
+    aud_txt_back.grid(row=6, column=0)
 
 def pagedel ():
     global short_url
@@ -174,8 +200,7 @@ def second_page():
     global youtube_download
     global vid_aud
     global aud_txt
-    start_button.grid_forget()
-    names.grid_forget()
+
     short_url=Button(root,text='SHORTEN YOUR URL',width=60,height=9,bg='paleTurquoise4',activebackground='lavender' ,command = shorterner_button)
     youtube_download =Button(root,text='DOWNLOAD YOUTUBE VIDEO',width=60,height=9,bg='paleTurquoise3',activebackground='lavender' ,command = youtube_button)
     vid_aud=Button(root,text='VIDEO TO AUDIO',width=60,height=9,bg='paleTurquoise2',activebackground='lavender' ,command= vid_audioButton)
@@ -225,11 +250,5 @@ def youtube_button():
     fact.grid(row = 4 ,column = 0 , padx = 3)
     fact1.grid(row = 5,column=0)
 
-
-names =Label(root,text='SIDDHARTH\nSAI SUJEETH\nHEMANTH')
-root.title('CS PROJECT')
-start_button=Button(root,text='click me to start',command=second_page)
-
-names.grid(row=0,column=0,padx=60,pady=36)
-start_button.grid(row=1,column=0,padx=60,pady=36)
+second_page()
 root.mainloop()
