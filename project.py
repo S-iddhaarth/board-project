@@ -13,6 +13,7 @@ url = StringVar()
 a = StringVar()
 link1 = StringVar()
 b = StringVar()
+
 def short_del():
     global label_short
     global label_short2
@@ -33,6 +34,7 @@ def short_del():
 
 def shorterner_button():
     pagedel()
+    root.configure(bg='#12a4d9')
     global label_short
     global label_short2
     global entry_short
@@ -40,21 +42,21 @@ def shorterner_button():
     global entry_short2
     global button_short2
     global backwaybutton
-    label_short = Label(root, text="ARE YOU TIED OF USING LONG LINKS ?", font=("Phosphate", 50), fg="Black", bg="yellow")
-    label_short2 = Label(root, text="DON'T WORRY WE HAVE A SOLUTION ""PASTE LINK BELOW TO SHOTEN", font=('Skia', 20), bg="Cyan",fg="white")
-    entry_short =  Entry(root, textvariable=a, width=50)
+    label_short = Label(root, text="ARE YOU TIRED OF USING LONG LINKS ?", font=("Phosphate", 35), fg="Black", bg="#12a4d9")
+    label_short2 = Label(root, text="DON'T WORRY WE HAVE A SOLUTION ""PASTE LINK BELOW TO SHOTEN", font=('Skia', 17), bg="#12a4d9",fg="#d9138a")
+    entry_short =  Entry(root, width=50,bg='snow2')
     # to get input and store in a
-    button_short = Button(text='click here', command=show, fg="pink", font=("Marker Felt", 15), height=3, width=10)  # a button which would trigger show() function
-    entry_short2 =Entry(root, textvariable=link1)  # diaplays the shortened url
-    button_short2 = Button(root, command=easycopy, text='COPY', font=('Marker Felt', 10), height=3, width=10, ) # button to copy the shortened url
-    backwaybutton = Button(root ,text =">>" ,command = short_del)
-    label_short.grid(row = 0 ,column = 0 ,columnspan = 2)
-    label_short2.grid(row = 1 ,column = 0 ,columnspan = 2)
-    entry_short.grid(row = 2 ,column = 0 ,columnspan = 2)
-    button_short.grid(row = 3 ,column = 0 ,columnspan = 2)
-    entry_short2.grid(row = 4 ,column = 0 ,columnspan = 2)
-    button_short2.grid(row = 5 ,column = 0 ,columnspan = 2)
-    backwaybutton.grid(row = 6 ,column = 1 ,columnspan = 2)
+    button_short = Button(text='click here', fg="black",bg='#e2d810', font=('Helvetica', 9,'bold'), height=2, width=9 , command = show)  # a button which would trigger show() function
+    entry_short2 =Entry(root,bg='snow2')  # diaplays the shortened url
+    button_short2 = Button(root, text='COPY', font=('Helvetica', 10,'bold'), height=2, width=7, fg='black',bg='#e2d810',command = easycopy) # button to copy the shortened url
+    backwaybutton = Button(root ,text =">>" , command = short_del )
+    label_short.grid(row = 0 ,column = 0 ,columnspan = 2,pady=6)
+    label_short2.grid(row = 1 ,column = 0 ,columnspan = 2,pady=6)
+    entry_short.grid(row = 2 ,column = 0 ,columnspan = 2,pady=6)
+    button_short.grid(row = 3 ,column = 0 ,columnspan = 2,pady=6)
+    entry_short2.grid(row = 4 ,column = 0 ,columnspan = 2,pady=6)
+    button_short2.grid(row = 5 ,column = 0 ,columnspan = 2,pady=6)
+    backwaybutton.grid(row = 6 ,column = 2)
 
 
 
@@ -125,7 +127,7 @@ def audio_to_text():
     aud_txt_covbutton.grid(row=4, column=0, pady=20)
     aud_tex2 = Label(text='AUDIO RECORDING TECHNOLOGY WAS HIDDEN FROM REST OF THE WORLD FOR\n 15 YEARS BY NAZI REGIME',font=('normal', 12), bg='light blue')
     aud_tex2.grid(row=5, column=0)
-    aud_txt_back.grid(row=6, column=0)
+    aud_txt_back.grid(row=6, column=1)
 
 def pagedel ():
     global short_url
@@ -145,30 +147,44 @@ def path_folder():
     root.filename = filedialog.askopenfilename()
     video = moviepy.editor.VideoFileClip(root.filename )
     audio = video.audio
-    audio.write_audiofile('audio.wav')
+    audio.write_audiofile("aaudio.wav")
 
 def vid_aud_del():
     global vdotoaud
     global convert_button
     global vid_auidiobac
+    global vid_aud
+
     vdotoaud.grid_forget()
     convert_button.grid_forget()
     vid_auidiobac.grid_forget()
+    vid_aud.grid_forget()
+
     second_page()
+
 
 
 def vid_audioButton ():
 
     pagedel()
+    root.configure(bg='royal blue')
     global vdotoaud
     global convert_button
     global vid_auidiobac
-    vdotoaud= Label(root , text ="VIDEO TO AUDIO CONVERTER")
-    convert_button = Button(root ,text = "Browse..." ,command = path_folder)
-    vid_auidiobac = Button(root , text =">>" , command = vid_aud_del )
-    vdotoaud.grid(row = 0 , column = 0)
-    convert_button.grid(row = 1 , column = 0)
-    vid_auidiobac.grid(row =2 ,column = 1)
+    global vid_aud
+
+
+
+
+    vdotoaud = Label(root, text="VIDEO TO AUDIO CONVERTER", font=('normal', 24), bg='royal blue', fg='black')
+    convert_button = Button(root, text="Browse...", bg='peach puff', fg='black', activebackground='paleTurquoise2',width=10, height=2, font=('normal', 12),command = path_folder)
+    vid_auidiobac = Button(root, text=">>", bg='peach puff' ,command = vid_aud_del)
+    vdotoaud.grid(row=0, column=0, padx=74, pady=15)
+    convert_button.grid(row=3, column=0)
+    vid_aud = Label(root,text='79% OF CONSUMERS WOULD RATHER WATCH A VIDEO TO LEARN ABOUT\n A PRODUCT, THAN READ TEXT ON A PAGE.',fg='peach puff', font=('bold', 12), bg='royal blue')
+    vid_aud.grid(row=4, column=0, pady=15)
+    vid_auidiobac.grid(row=5, column=1)
+
 
 
 
@@ -249,6 +265,5 @@ def youtube_button():
     download_button.grid(row=3, column=0, pady=5)
     fact.grid(row = 4 ,column = 0 , padx = 3)
     fact1.grid(row = 5,column=0)
-
 second_page()
 root.mainloop()
