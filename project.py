@@ -1,5 +1,5 @@
 import moviepy.editor
-"""this library is used here to write audio file from an video"""
+"""this library is used here to write audio file from a video"""
 from tkinter import *
 """Tkinter is  GuiProgramming toolkit for Python"""
 from tkinter import filedialog
