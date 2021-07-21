@@ -78,9 +78,9 @@ def pagedel():
 
 
 def shorterner_button():
-    """this function is used in the command of short_url button defined in the second_page() function.
-    it gets the link from user and displays the shortened  """
+    """it gets the link from user and displays the shortened  """
     # the shorterning process is done by other function called show() .
+    # this function is used in the command of short_url button defined in the second_page() function
 
     pagedel()
     root.configure(bg='#12a4d9')
@@ -126,7 +126,7 @@ def shorterner_button():
 
 
 def short_del():
-    '''this fucntion clears all the wigets present in the shorterner_button() function and calls back second_page()  '''
+    '''this fucntion clears all the wigets present in the shortener_button() function and calls back second_page()  '''
     # this function is used in the command backwaybutton present in shorterner_button()
     global label_short
     global label_short2
@@ -157,7 +157,7 @@ def show():
 
 
 def easycopy():
-    """function to copy the shortened url"""
+    """THIS function copies  shortened url"""
 
     linkS = link1.get()
     pyperclip.copy(linkS)  # code to copy
@@ -310,6 +310,9 @@ def vid_aud_del():
 
 
 def audio_to_text():
+
+    """it gets the name of the .txt file in which u want to store the text and specifies the look of the page """
+
     pagedel()
     root.configure(bg='light blue')
 
