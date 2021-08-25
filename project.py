@@ -28,17 +28,14 @@ def second_page():
     short_url which takes u to link shortner ,youtube_download- which takes u to a youtube video downloader ,vid_aud- takes you
      to audio extractor(extracts audio from video and give output in .wav codec) and aud_txt - recognises the audio and
       and make it to text and give output in .txt file"""
-
     global short_url
     global youtube_download
     global vid_aud
     global aud_txt
-
     # all the buttons are defined below
     # The Button widget is used to add buttons in a Python application. These buttons can display
     # text or images that convey the purpose of the buttons. You can attach a function or a method
     # to a button which is called automatically when you click the button
-
     short_url = Button(root, text='SHORTEN YOUR URL', width=60, height=9, bg='paleTurquoise4',
                        activebackground='lavender', command=shorterner_button)
     youtube_download = Button(root, text='DOWNLOAD YOUTUBE VIDEO', width=60, height=9, bg='paleTurquoise3',
@@ -47,10 +44,8 @@ def second_page():
                      command=vid_audioButton)
     aud_txt = Button(root, text='AUDIO TO TEXT', width=60, height=9, bg='paleTurquoise1', activebackground='lavender',
                      command=audio_to_text)
-
     # The Grid geometry manager puts the widgets in a 2-dimensional table. The master widget is split
     # into a number of rows and columns, and each “cell” in the resulting table can hold a widget
-
     short_url.grid(row=1, column=0)
     youtube_download.grid(row=2, column=0)
     vid_aud.grid(row=3, column=0)
@@ -81,10 +76,8 @@ def shorterner_button():
     """it gets the link from user and displays the shortened  """
     # the shorterning process is done by other function called show() .
     # this function is used in the command of short_url button defined in the second_page() function
-
     pagedel()
     root.configure(bg='#12a4d9')
-
     global label_short
     global label_short2
     global entry_short
@@ -92,9 +85,7 @@ def shorterner_button():
     global entry_short2
     global button_short2
     global backwaybutton
-
     # Lable section
-
     label_short = Label(root, text="ARE YOU TIRED OF USING LONG LINKS ?", font=("Phosphate", 35), fg="Black",
                         bg="#12a4d9")
     label_short2 = Label(root, text="DON'T WORRY WE HAVE A SOLUTION ""PASTE LINK BELOW TO SHOTEN", font=('Skia', 17),
